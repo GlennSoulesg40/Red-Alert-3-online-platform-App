@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.red3.app.common.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.red3.app.common.entity.User">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="user_name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="QQ" jdbcType="VARCHAR" property="QQ" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="head_image" jdbcType="VARCHAR" property="head_image" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="login_time" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+
+</mapper>

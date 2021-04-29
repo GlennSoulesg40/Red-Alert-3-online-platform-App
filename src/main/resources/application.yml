@@ -1,0 +1,16 @@
+mybatis:
+  mapper-locations: classpath:mappers/*xml
+  type-aliases-package: com.red3.app.mybatis.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8080
+spring:
+  application:
+    name: red3
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: defaultDataSource
+    password: 123456
+    url: jdbc:mysql://81.70.228.254:3306/red3?serverTimezone=UTC
+    username: root
