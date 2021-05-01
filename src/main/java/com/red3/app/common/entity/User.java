@@ -1,6 +1,7 @@
 package com.red3.app.common.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -9,13 +10,15 @@ import javax.persistence.Table;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * @TableName user
  */
 @Table(name="user")
 @Data
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
     /**
      * 
      *
@@ -81,4 +84,35 @@ public class User implements Serializable {
      * @mbg.generated Fri Apr 30 00:08:22 CST 2021
      */
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

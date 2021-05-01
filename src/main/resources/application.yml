@@ -1,16 +1,40 @@
 mybatis:
   mapper-locations: classpath:mappers/*xml
   type-aliases-package: com.red3.app.mybatis.entity
+
+
+mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
   port: 8080
+#spring:
+#  application:
+#    name: red3
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    name: defaultDataSource
+#    password: 123456
+#    url: jdbc:mysql://81.70.228.254:3306/red3?serverTimezone=UTC
+#    username: root
 spring:
   application:
     name: red3
   datasource:
+    type:
+      com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    name: defaultDataSource
-    password: 123456
     url: jdbc:mysql://81.70.228.254:3306/red3?serverTimezone=UTC
+    password: 123456
     username: root
+    # 初始化，最小，最大连接数
+    initialSize: 3
+    minidle: 3
+    maxActive: 18
+    # 获取数据库连接等待的超时时间
+    maxWait: 60000
+    # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1 FROM dual
+    # 配置监控统计拦截的filters,去掉后，监控界面的sql无法统计
+    filters: stat,wall,log4j

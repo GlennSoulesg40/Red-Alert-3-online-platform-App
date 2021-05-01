@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 /**
@@ -22,7 +23,7 @@ import java.util.Collection;
  * @author: zxl
  * @create: 2021-04-30 0:42
  */
-@Service
+@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -40,7 +41,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if(user==null)
             return null;
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(user.getIdentity()));
+        Arrays.stream(user.getIdentity().split(",")).forEach(e->{
+            authorities.add(new SimpleGrantedAuthority(e));
+        });
         return new org.springframework.security.core.userdetails.User(s,passwordEncoder.encode(user.getPassword()),authorities);
 
     }
